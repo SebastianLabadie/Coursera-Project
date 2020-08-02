@@ -5,7 +5,6 @@ import DishDetail from './DishdetailComponent';
 import { DISHES } from '../test_data/dishes';
 import { Component } from 'react';
 
-
 class Main extends Component{
 
   constructor(props){
