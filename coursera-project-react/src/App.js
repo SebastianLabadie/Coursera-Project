@@ -1,6 +1,7 @@
 import React from 'react';
 import Main from './components/MainComponent';
 import './App.css'
+import { BrowserRouter } from 'react-router-dom'
 import { Component } from 'react';
 
 
@@ -8,9 +9,13 @@ class App extends Component{
 
   render(){
     return (
-      <div className="App">
+      <BrowserRouter> 
+        <div className="App">
+
         <Main />
-      </div>
+        </div>
+      </BrowserRouter>
+      
     )
   };
 };
