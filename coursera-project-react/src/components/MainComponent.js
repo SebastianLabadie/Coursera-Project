@@ -70,10 +70,5 @@ class Main extends Component{
     )
   };
 
-    
-  onDishSelected(dishID){
-    this.setState({selectedDish: dishID});
-  }
-
 };
 export default withRouter(connect(mapStateToProps)(Main));
