@@ -168,7 +168,7 @@ class Contact extends Component {
                                 </Col>
                                 <Col md={{size: 3, offset: 1}}>
                                     <Control.select model=".contactType" name="contactType"
-                                        className="form-control">
+                                        className="form-control" defaultValue="Tel.">
                                         <option>Tel.</option>
                                         <option>Email</option>
                                     </Control.select>

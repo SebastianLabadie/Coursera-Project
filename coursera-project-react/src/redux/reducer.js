@@ -8,6 +8,7 @@ export const initialState={
     comments: COMMENTS,
     promotions: PROMOTIONS,
     leaders:LEADERS
+    
 }
 
 export const Reducer= (currentState=initialState,action) =>{
