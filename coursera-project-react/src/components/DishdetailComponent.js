@@ -37,7 +37,7 @@ class CommentForm extends React.Component{
         return(
             <>
             <Button outline onClick={this.handleClick} >
-                <span className="fas fa-pen"> Submit Comment </span>    
+                <span className="fa fa-edit fa-lg"> Submit Comment </span>    
             </Button>
              <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
              <ModalHeader><h4>Submit Comment</h4></ModalHeader>
