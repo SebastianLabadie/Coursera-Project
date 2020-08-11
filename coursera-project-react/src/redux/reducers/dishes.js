@@ -1,4 +1,4 @@
-import { DISHES } from '../test_data/dishes';
+import { DISHES } from '../../test_data/dishes';
 
 export const dishes= (state=DISHES,action)=>{
         switch(action.type){

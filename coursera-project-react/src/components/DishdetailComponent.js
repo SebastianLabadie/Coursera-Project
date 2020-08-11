@@ -30,6 +30,7 @@ class CommentForm extends React.Component{
 
     handleSubmit=(values)=>{
         console.log(values)
+        this.props.addComment(this.props.dishId,values.rating,values.author,values.comment)
     }
 
     render(){
@@ -105,7 +106,7 @@ class CommentForm extends React.Component{
     }
 }
 
-   function RenderComments({comments}) {
+   function RenderComments({comments,dishId,addComment}) {
         const commentsList = comments.map((comment) => {
           return (
             <li key={comment.id}>
@@ -124,7 +125,7 @@ class CommentForm extends React.Component{
                 <li><h4>Comments</h4></li>
                 {commentsList}
               </ul>
-              <CommentForm />
+              <CommentForm dishId={dishId} addComment={addComment} />
             </div>
           );
         else
@@ -172,7 +173,9 @@ class CommentForm extends React.Component{
                         <RenderDish dish={props.dish} />
                       </div>
                       <div className="col-12 col-md-5 m-1">
-                        <RenderComments comments={props.comments} />
+                        <RenderComments comments={props.comments} 
+                        dishId={props.dish.id} addComment={props.addComment}
+                        />
                       </div> 
             </div>
                    

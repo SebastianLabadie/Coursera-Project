@@ -1,4 +1,4 @@
-import { LEADERS } from '../test_data/leaders';
+import { LEADERS } from '../../test_data/leaders';
 
 export const leaders= (state=LEADERS,action)=>{
     switch(action.type){
