@@ -5,7 +5,7 @@ import {promotions} from './reducers/promotions'
 import {leaders} from './reducers/leaders'
 import thunk from 'redux-thunk'
 import logger from 'redux-logger'
-import {combineForms, createForms} from 'react-redux-form'
+import { createForms} from 'react-redux-form'
 import { initialFeedBack } from './reducers/forms'
 
 

@@ -5,6 +5,7 @@ import { Card, CardImg, CardText, CardBody,
 import {Link} from 'react-router-dom'
 import {LocalForm,Errors,Control} from 'react-redux-form'
 import {Loading} from './LoadingComponent'
+import {baseURL} from '../test_data/baseURL'
 
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
 const minLength = (len) => (val) => val && (val.length >= len);
@@ -139,7 +140,7 @@ class CommentForm extends React.Component{
         if(dish != null ){
             return(
                         <Card>
-                        <CardImg width="100%" src={dish.image} alt={dish.name} />
+                        <CardImg width="100%" src={baseURL+dish.image} alt={dish.name} />
                         <CardBody>
                             <CardTitle>{dish.name}</CardTitle>
                             <CardText>{dish.description}</CardText>
