@@ -6,6 +6,7 @@ import {Link} from 'react-router-dom'
 import {LocalForm,Errors,Control} from 'react-redux-form'
 import {Loading} from './LoadingComponent'
 import {baseURL} from '../test_data/baseURL'
+import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
 const minLength = (len) => (val) => val && (val.length >= len);
@@ -111,12 +112,14 @@ class CommentForm extends React.Component{
    function RenderComments({comments,dishId,addComment}) {
         const commentsList = comments.map((comment) => {
           return (
+            <Fade in> 
             <li key={comment.id}>
               <p>{comment.comment}</p>
               <p>--- {comment.author},
                 {new Intl.DateTimeFormat('en-US',{ year:"numeric", month:"short", day:"2-digit"}).format(new Date(Date.parse(comment.date)))}
               </p>
             </li>
+            </Fade>
           );
         });
     
@@ -124,8 +127,10 @@ class CommentForm extends React.Component{
           return (
             <div>
               <ul className="list-unstyled">
+              <Stagger in> 
                 <li><h4>Comments</h4></li>
                 {commentsList}
+                </Stagger>
               </ul>
               <CommentForm dishId={dishId} addComment={addComment} />
             </div>
@@ -139,6 +144,11 @@ class CommentForm extends React.Component{
   function  RenderDish({dish}){
         if(dish != null ){
             return(
+                <FadeTransform
+                in
+                transformProps={{
+                    exitTransform: 'scale(0.5) translateY(-50%)'
+                }}> 
                         <Card>
                         <CardImg width="100%" src={baseURL+dish.image} alt={dish.name} />
                         <CardBody>
@@ -146,7 +156,7 @@ class CommentForm extends React.Component{
                             <CardText>{dish.description}</CardText>
                         </CardBody>
                         </Card>
-                        
+                </FadeTransform>    
             );
         }
         else{
