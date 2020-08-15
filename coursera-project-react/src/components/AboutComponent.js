@@ -1,12 +1,27 @@
 import React from 'react';
 import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, Media } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import {Loading} from './LoadingComponent'
+import {baseURL} from '../test_data/baseURL'
+import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 
 
-function RenderLeader({leader}) {
+function RenderLeader({leader,isLoading,errMess}) {
+    
+    if (isLoading) {
+        return(
+                <Loading />
+        );
+    }
+    else if (errMess) {
+        return(
+                <h4>{errMess}</h4>
+        );
+    }
+    else 
     return(
     <Media tag="li" > 
-        <Media left > <Media object src={leader.image} alt="Leader Image"/></Media>
+        <Media left > <Media object src={baseURL+leader.image} alt={leader.name}/></Media>
         <Media body className="ml-5">
             <Media heading>{leader.name}</Media>
             <p>{leader.designation}</p>
@@ -20,13 +35,16 @@ function About(props) {
 
     const leaders = props.leaders.map((leader) => {
         return (
-            <div key={leader.id} className="mt-1">
-            <RenderLeader  leader={leader}/>
-            </div>
+            <Fade in> 
+                <div key={leader.id} className="mt-1">
+                <RenderLeader  leader={leader}
+                isLoading={props.leadersIsLoading}
+                ErrMess={props.leadersErrMess}/>
+                </div>
+            </Fade>
         );
     });
 
-    
     return(
         <div className="container">
             <div className="row mt-2">
@@ -82,9 +100,13 @@ function About(props) {
                     <h2>Corporate Leadership</h2>
                 </div>
                 <div className="col-12">
+                
                     <Media list>
-                        {leaders}
+                        <Stagger in> 
+                            {leaders}
+                        </Stagger>
                     </Media>
+                    
                 </div>
             </div>
         </div>

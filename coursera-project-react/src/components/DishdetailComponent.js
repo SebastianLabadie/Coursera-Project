@@ -33,7 +33,8 @@ class CommentForm extends React.Component{
 
     handleSubmit=(values)=>{
         console.log(values)
-        this.props.addComment(this.props.dishId,values.rating,values.author,values.comment)
+        this.props.postComment(this.props.dishId,values.rating,values.author,values.comment)
+      
     }
 
     render(){
@@ -109,7 +110,7 @@ class CommentForm extends React.Component{
     }
 }
 
-   function RenderComments({comments,dishId,addComment}) {
+   function RenderComments({comments,dishId,postComment}) {
         const commentsList = comments.map((comment) => {
           return (
             <Fade in> 
@@ -132,7 +133,7 @@ class CommentForm extends React.Component{
                 {commentsList}
                 </Stagger>
               </ul>
-              <CommentForm dishId={dishId} addComment={addComment} />
+              <CommentForm dishId={dishId} postComment={postComment} />
             </div>
           );
         else
@@ -205,7 +206,7 @@ class CommentForm extends React.Component{
                       </div>
                       <div className="col-12 col-md-5 m-1">
                         <RenderComments comments={props.comments} 
-                        dishId={props.dish.id} addComment={props.addComment}
+                        dishId={props.dish.id} postComment={props.postComment}
                         />
                       </div> 
             </div>

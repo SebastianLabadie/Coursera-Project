@@ -15,7 +15,7 @@ function RenderCard({item,isLoading,errMess}) {
                 <h4>{errMess}</h4>
         );
     }
-    else 
+    else {
     return(
         <FadeTransform
                 in
@@ -23,7 +23,7 @@ function RenderCard({item,isLoading,errMess}) {
                     exitTransform: 'scale(0.5) translateY(-50%)'
         }}>
                 <Card>
-                    <CardImg src={baseURL+item.image} alt={item.name} />
+                     <CardImg src={baseURL+item.image} alt={item.name} /> 
                     <CardBody>
                     <CardTitle>{item.name}</CardTitle>
                     {item.designation ? <CardSubtitle>{item.designation}</CardSubtitle> : null }
@@ -31,7 +31,7 @@ function RenderCard({item,isLoading,errMess}) {
                     </CardBody>
                 </Card>
         </FadeTransform>
-    );
+    );}
 
 }
 
@@ -52,6 +52,8 @@ function Home(props) {
                 </div>
                 <div className="col-12 col-md m-1">
                     <RenderCard item={props.leader} 
+                     isLoading={props.leadersIsLoading}
+                     ErrMess={props.leadersErrMess}
                     />
                 </div>
             </div>
